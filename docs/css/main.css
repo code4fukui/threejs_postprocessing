@@ -36,3 +36,9 @@ canvas {
 #object_change label {
   margin: 10px;
 }
+.credit {
+  font-size: 90%;
+}
+.credit a {
+  color: white !important;
+}
