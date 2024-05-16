@@ -87,7 +87,8 @@ export class TestObjects {
   createImagePlane() {
     const group = new THREE.Group();
     const texture = new THREE.TextureLoader().load(
-      "texture/flower_1024x1024.jpg"
+      //"texture/flower_1024x1024.jpg"
+      "texture/fukui_find47_2705.jpg"
     );
     texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
 
