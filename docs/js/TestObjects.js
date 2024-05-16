@@ -1,4 +1,7 @@
 import * as THREE from "three";
+import { Camera } from "https://code4fukui.github.io/Camera/Camera.js";
+
+const videoSrc = "texture/BigBuckBunny_320x180.mp4";
 
 /**
  * 画面上に表示するオブジェクトをまとめたクラスです。
@@ -8,6 +11,7 @@ export class TestObjects {
     this.renderer = renderer;
     this.meshImage = this.createImagePlane();
     this.meshVideo = this.createVideoPlane();
+    this.camera = new Camera(this.video, { width: 320, height: 180, onFrame: () => {} });
 
     this.currentType = "image";
   }
@@ -17,14 +21,23 @@ export class TestObjects {
 
     switch (type) {
       case "video":
+        this.camera.stop();
+        this.video.src = videoSrc;
         this.video.play();
         this.meshImage.visible = false;
         this.meshVideo.visible = true;
         break;
       case "image":
         this.video.pause();
+        this.camera.stop();
         this.meshImage.visible = true;
         this.meshVideo.visible = false;
+        break;
+      case "camera":
+        this.videoElement = this.video;
+        this.camera.start();
+        this.meshImage.visible = false;
+        this.meshVideo.visible = true;
         break;
       default:
         throw new Error();
@@ -34,7 +47,7 @@ export class TestObjects {
   createVideoPlane() {
     // video要素とそれをキャプチャするcanvas要素を生成
     this.video = document.createElement("video");
-    this.video.src = "texture/BigBuckBunny_320x180.mp4";
+    this.video.src = videoSrc;
     this.video.width = 320;
     this.video.height = 180;
     this.video.load();

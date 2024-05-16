@@ -42,6 +42,7 @@ let mouseY = 0;
         targetTypes: [
           { name: "画像", value: "image" },
           { name: "ビデオ", value: "video" },
+          { name: "カメラ", value: "camera" },
         ],
         picked: "image",
       };
