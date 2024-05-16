@@ -12,6 +12,7 @@ import { RandomDitherShader } from "./shader/RandomDitherShader.js";
 import { SepiaToneShader } from "./shader/SepiaToneShader.js";
 import { ThresholdShader } from "./shader/ThresholdShader.js";
 import { UzumakiShader } from "./shader/UzumakiShader.js";
+import { TVShader } from "./shader/TVShader.js";
 import { TestObjects } from "./TestObjects.js";
 
 import { createApp } from "vue";
@@ -38,6 +39,7 @@ let mouseY = 0;
             selected: false,
           },
           { name: "2値化(ベイヤーディザ)", id: "bayerDither", selected: false },
+          { name: "TVフィルタ", id: "tv", selected: false },
         ],
         targetTypes: [
           { name: "画像", value: "image" },
@@ -109,7 +111,8 @@ effectList.push(
   uzumakiEffect,
   addEffect("threshold", new ThresholdShader()),
   addEffect("randomDither", new RandomDitherShader()),
-  addEffect("bayerDither", new BayerDitherShader(width, height))
+  addEffect("bayerDither", new BayerDitherShader(width, height)),
+  addEffect("tv", new TVShader(width, height)),
 );
 
 tick();
