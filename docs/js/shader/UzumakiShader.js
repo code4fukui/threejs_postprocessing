@@ -37,7 +37,7 @@ export class UzumakiShader {
       tDiffuse: { type: "t", value: null },
       vScreenSize: { type: "v2", value: new THREE.Vector2(300, 200) },
       vCenter: { type: "v2", value: new THREE.Vector2(1000, 0) },
-      fRadius: { type: "f", value: 150.0 },
+      fRadius: { type: "f", value: 250.0 },
       fUzuStrength: { type: "f", value: 2.5 },
     };
     this.vertexShader = VERTEX_SHADER;
